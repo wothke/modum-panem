@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+ modum panem
+
+ 	Copyright (C) 2017 Juergen Wothke
+
+ Extended version of my earlier "woofers & the beauty of numbers" (http://www.wothke.ch/woofers/).
+ I added some interactive modes to let user explore the fractal world.
+ 
+ The visual effects are based on Fractal Lab's "mandelbox" raymarching with added collision handling for
+ integration of traditional 3d visuals. Various postprocessing effect like "exhaust glow", "god's ray" or 
+ "TV scanlines". 
+ 
+  Credits: 
+ 
+ 1) The music was created by Wolf Budgenhagen (see https://www.wrightandbastard.com/ )and is used here 
+ with his permission. also see https://soundcloud.com/nosys-productions/sets/blurred-memories  
+ and https://www.discogs.com/de/Drumhead-Raw-Collection/release/1778931 
+ 
+ 2) The 3d spaceship model is based on "Millennium Falcon - Cycles" (author: RegusTtef.
+ Premalink: http://www.blendswap.com/blends/view/75327 License CC-BY). I stripped down the model
+ to at least somewhat reduce the memory footprint.
+ 
+ 3) "mandelbox" shaders derived from Fractal Lab's work (see src for various credits that apply to 
+ the different aspects of that impl).
+ 
+ 4) the used font is a patched version of "one80.ttf (One-Eighty)" by Darren Rigby (dart@puzzlers.org)
+-->
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<title>modum panem</title>
+
+<meta name="description" content="WebGL based raymarching with other 3D elements">
+<meta name="author" content="Juergen Wothke">
+<meta name="keywords" content="Web Audio API, HTML5, JavaScript, THREE.js">
+
+<link rel="image_src" href="screenshot.gif" />
+<meta property="og:image" content="http://www.wothke.ch/modum/screenshot.gif" />
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<link type="image/x-icon" href="favicon.ico" />
+<link href="woofers.css" rel="stylesheet" type="text/css">
+
+<script src="./three.min.js"></script>
+<script src="./woofers.mandelbox.min.js"></script>
+<script src="./woofers.shaders.min.js"></script>
+<script src="./musiccloud.min.js"></script>
+<script src="./woofers.utils.min.js"></script>
+<script src="./woofers.min.js"></script>
+</head>
+<body>
+<div>
+<canvas id="canvasID" width="640" height="480"></canvas>
+<div id="sound-title"></div>
+<div id="info" class="info">Click mouse or press 'enter' to show this window. 
+List of other controls: <ul><li>'space' to toggle between scripted and interactive flight path.
+<li>'ctrl' toggles 'look around' mode while on scripted flight path
+<li>'q', 'a', &#8592;, &#8593;, &#8594;, &#8595; keys are used to steer while in interactive mode 
+(alternatively mouse dragging and mouse wheel can be used).
+<li>'F11' to toggle full screen mode
+<li>use hash URL to select whatever SoundCloud music you want to play (default music by <a href="https://www.wrightandbastard.com/" target="_blank">https://www.wrightandbastard.com/</a>)
+</ul><p>Use Chrome for correct rendering!<p>Copyright (C) 2017 Juergen Wothke<input id="volume" type="range" min="0" max="100" value="100"></div>
+</div>
+<div id="isloading"></div>
+<audio id="player"><source id="mp3Source" type="audio/mp3"/></audio>
+
+
+<script type="text/javascript">
+var vol = document.getElementById("volume");
+vol.onchange = function(){
+	music.setVolume(this.value/100);
+};	
+
+var woofer= new Woofer("canvasID");
+woofer.start();
+
+showInfo();
+</script>
+
+</body></html>

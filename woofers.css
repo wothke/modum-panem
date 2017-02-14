@@ -1,0 +1,175 @@
+/* use some freely availavle google font */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(font.woff) format('woff');
+}
+
+html{background-color:#fff}*{margin:10;padding:10}
+
+/* basic styling of the info box */
+canvas {
+  border: 1px solid black;
+}
+
+#isloading {					/* indicator that "load in progress" */
+  position: absolute;
+  top: 10px; 	
+  left: 10px;	
+}
+#sound-title {
+  position: relative;
+  top: 10px; 	
+  left: 10px;
+  font-family: 'Open Sans', arial, sans-serif;
+}
+.info{
+    display: block;
+	position: relative;
+
+	opacity: 0.68;
+		
+	font-family: 'Open Sans', arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-size:0.8em;
+	font-weight:bold;
+	
+	background-color: #dfdfdf; 
+    width: 450px;
+	height: 230px;
+	padding: 5px 10px;
+		
+
+    border-radius: 7px;
+    border: 1px solid rgba(0,0,0,0.15);
+    box-shadow: 0 1px 1px rgba(50,50,50,0.1);
+
+	top: -280px;
+	left: 20px;
+
+	color: black;
+}
+
+/* cross browser styling of the "volume" control slider */
+input[type=range] {
+    display: block;
+	position: relative;
+	float: right;
+	-webkit-appearance: none;
+	margin: 10px 0;
+	width: 50;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 50;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #B3B3B3;
+  border-radius: 0px;
+  border: 0px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  border: 2px solid #757575;
+  height: 14px;
+  width: 14px;
+  border-radius: 11px;
+  background: #E6E6E6;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #B3B3B3;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #B3B3B3;
+  border-radius: 0px;
+  border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  border: 2px solid #757575;
+  height: 10px;
+  width: 10px;
+  border-radius: 11px;
+  background: #E6E6E6;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 7px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #B3B3B3;
+  border: 0px solid #000000;
+  border-radius: 0px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #B3B3B3;
+  border: 0px solid #000000;
+  border-radius: 0px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-thumb {
+  border: 2px solid #757575;
+  height: 14px;
+  width: 14px;
+  border-radius: 11px;
+  background: #E6E6E6;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #B3B3B3;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #B3B3B3;
+}
+
+/* styling used for fullscreen mode */
+#canvasID {
+}
+#canvasID:-webkit-full-screen	
+{ 
+	width: 100%;
+	height: 100%;
+	margin:0;
+	border:0;
+	padding:0;
+	background-color:#000;
+}
+:-moz-full-screen #canvasID{
+  width: 100% !important;
+}
+:-ms-fullscreen #canvasID{
+  width: 100% !important;
+}
+:fullscreen #canvasID{
+  width: 100% !important;
+}
+:-webkit-full-screen #canvasID{
+  width: 100% !important;
+}
+:-moz-full-screen #canvasID{
+  width: 100% !important;
+}
+:-ms-fullscreen #canvasID{
+  width: 100% !important;
+}
+:fullscreen #canvasID{
+  width: 100% !important;
+}
